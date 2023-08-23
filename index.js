@@ -16,11 +16,16 @@ function Phrase(content) {
 
     // コンテンツの文字だけを返す
     this.letters = function letters() {
-        return (this.content.match(/[a-z]/gi) || []).join("");
+        const lettersRegEx = /[a-z]/gi;
+        return (this.content.match(lettersRegEx) || []).join("");
     }
 
     // パリンドロームならtrueを、違うならfalseを返す
     this.palindrome = function palindrome() {
-        return this.processedContent() === this.processedContent().reverse();
+        if (this.processedContent()) {
+            return this.processedContent() === this.processedContent().reverse();
+        } else {
+            return false;
+        }
     }
 }
